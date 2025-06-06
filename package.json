@@ -1,0 +1,136 @@
+{
+  "name": "angular-snippets",
+  "displayName": "Angular Snippets",
+  "description": "Supercharge your Angular workflow in VS Code! This extension streamlines Angular development by letting you generate components, services, pipes, directives, and more—right from the context menu. No more manual scaffolding or repetitive imports!",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Snippets",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "angular",
+    "snippets",
+    "productivity",
+    "components",
+    "scaffolding",
+    "generator",
+    "typescript"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "l10n": "./l10n",
+  "contributes": {
+    "commands": [
+      {
+        "command": "angular-snippet-tools.createComponent",
+        "title": "%angular-snippet-tools.createComponent.title%"
+      },
+      {
+        "command": "angular-snippet-tools.createService",
+        "title": "%angular-snippet-tools.createService.title%"
+      },
+      {
+        "command": "angular-snippet-tools.createDirective",
+        "title": "%angular-snippet-tools.createDirective.title%"
+      },
+      {
+        "command": "angular-snippet-tools.createPipe",
+        "title": "%angular-snippet-tools.createPipe.title%"
+      },
+      {
+        "command": "angular-snippet-tools.createGuard",
+        "title": "%angular-snippet-tools.createGuard.title%"
+      },
+      {
+        "command": "angular-snippet-tools.createInterceptor",
+        "title": "%angular-snippet-tools.createInterceptor.title%"
+      },
+      {
+        "command": "angular-snippet-tools.createAndAddRoute",
+        "title": "%angular-snippet-tools.createAndAddRoute.title%"
+      },
+      {
+        "command": "angular-snippet-tools.createRoutesFile",
+        "title": "%angular-snippet-tools.createRoutesFile.title%"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "angular-snippet-tools.menu",
+        "label": "Angular Snippet Tools"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "submenu": "angular-snippet-tools.menu",
+          "group": "navigation"
+        }
+      ],
+      "angular-snippet-tools.menu": [
+        {
+          "command": "angular-snippet-tools.createComponent",
+          "group": "1_creation"
+        },
+        {
+          "command": "angular-snippet-tools.createRoutesFile",
+          "group": "1_creation"
+        },
+        {
+          "command": "angular-snippet-tools.createService",
+          "group": "1_creation"
+        },
+        {
+          "command": "angular-snippet-tools.createDirective",
+          "group": "1_creation"
+        },
+        {
+          "command": "angular-snippet-tools.createPipe",
+          "group": "1_creation"
+        },
+        {
+          "command": "angular-snippet-tools.createGuard",
+          "group": "1_creation"
+        },
+        {
+          "command": "angular-snippet-tools.createInterceptor",
+          "group": "1_creation"
+        },
+        {
+          "command": "angular-snippet-tools.createAndAddRoute",
+          "group": "2_advanced"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "extract-strings": "vscode-l10n-dev export -o ./l10n ./src",
+    "bundle-l10n": "vscode-l10n-dev bundle --outDir ./l10n"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.100.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/l10n-dev": "^0.0.35",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.18"
+  }
+}

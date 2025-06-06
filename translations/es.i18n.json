@@ -1,0 +1,11 @@
+{
+  "input.nameType": "Nombre del {0}",
+  "warning.nameNotProvided": "Nombre del {0} no proporcionado.",
+  "input.componentName": "Nombre del componente",
+  "warning.noComponentName": "No se proporcionó el nombre del componente.",
+  "warning.noRoutesFile": "No se encontró un archivo *.routes.ts cercano.",
+  "info.routeAdded": "Ruta añadida a {0}.",
+  "input.routesFileName": "Nombre del archivo de rutas",
+  "warning.routesFileNameMissing": "No se proporcionó el nombre del archivo de rutas.",
+  "info.routesFileCreated": "{0}.routes.ts creado exitosamente."
+}

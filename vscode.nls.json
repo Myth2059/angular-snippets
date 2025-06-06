@@ -1,0 +1,9 @@
+{
+  "language": "en",
+  "locales": [
+    {
+      "language": "es",
+      "translations": "./l10n/bundle.l10n.es.json"
+    }
+  ]
+}

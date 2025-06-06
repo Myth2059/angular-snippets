@@ -1,0 +1,10 @@
+{
+  "angular-snippet-tools.createComponent.title": "Crear componente",
+  "angular-snippet-tools.createService.title": "Crear servicio",
+  "angular-snippet-tools.createDirective.title": "Crear directiva",
+  "angular-snippet-tools.createPipe.title": "Crear pipe",
+  "angular-snippet-tools.createGuard.title": "Crear guard",
+  "angular-snippet-tools.createInterceptor.title": "Crear interceptor",
+  "angular-snippet-tools.createAndAddRoute.title": "Crear y agregar a rutas",
+  "angular-snippet-tools.createRoutesFile.title": "Crear archivo de rutas"
+}
