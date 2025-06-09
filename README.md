@@ -1,76 +1,63 @@
-# 🧩 Angular Snippets Extension for VS Code
+# 🧩 Angular Snippet Tools
 
-A powerful Visual Studio Code extension that simplifies Angular development by allowing you to **generate components, services, pipes, directives**, and more—directly from the context menu.
+A powerful extension for Visual Studio Code that simplifies Angular development. Generate components, services, routes, pipes, and more directly from the context menu.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
 - ✅ Right-click to generate Angular elements:
+
   - Component
   - Directive
   - Guard
   - Interceptor
   - Pipe
   - Service
-- ✅ Supports **standalone components**.
-- ✅ Automatically adds generated components to the nearest routing file (`*.routes.ts`).
-- ✅ Multi-language support using `@vscode/l10n`.
-- ✅ Bundled with `i18n` and `l10n` for localized experiences.
+
+- ✅ Additional commands:
+  - **Create and Add to Route**: Adds a new component to the closest `*.routes.ts` file
+  - **Create Routes File**: Generates a default Angular routes file
 
 ---
 
-## 🌐 Internationalization (i18n)
+## 🎯 How It Works
 
-This extension uses VS Code’s new localization API via `@vscode/l10n`. Bundles are located in the `/l10n` folder.
+Using Angular Snippet Tools is as easy as 1-2-3:
 
-- EN (default)
-- ES (bundle.l10n.es.json)
+### 🥇 Step 1: Right-click on a folder and select what you want to generate
 
-To extract and manage translation strings:
+> 📂 The item will be created directly **inside the folder you clicked**.
 
-```bash
-npx @vscode/l10n-dev export -o ./l10n ./src
-```
+![Step 1 - Right click](images/step1.png)
+
+---
+
+### 🥈 Step 2: Enter a name for your component, service, or other element
+
+![Step 2 - Input name](images/step2.png)
+
+---
+
+### 🥉 Step 3: Watch the VS Code loading bar as your Angular element is generated
+
+![Step 3 - VS Code loading](images/step3.png)
+
+---
+
+Once generated, your file will be placed **exactly in the selected folder**, using Angular 17+ conventions like `standalone` components and proper structure.
+
+---
+
+## 🌍 Localization Support
+
+Supports English (default) and Spanish. Powered by [`@vscode/l10n`](https://www.npmjs.com/package/@vscode/l10n).
 
 ---
 
 ## 📦 Requirements
 
-- Angular CLI installed globally (`npm install -g @angular/cli`)
-- Node.js and npm
-
----
-
-## 🛠 How to Use
-
-1. Right-click a folder in the Explorer.
-2. Select one of the Angular generation options.
-3. For components, they will be added to the closest `*.routes.ts` file automatically.
-
----
-
-## 📁 Project Structure
-
-```
-angular-snippet-tools/
-├── l10n/                      # Language bundles
-├── src/                       # Extension logic
-│   └── extension.ts
-├── package.json               # Extension metadata
-├── vscode.nls.json            # Locale mapping
-└── README.md
-```
-
----
-
-## 🧑‍💻 Author
-
-Michael González — [LinkedIn](https://www.linkedin.com/in/myth-dev)  
-Extension developed with ❤️ and TypeScript
-
----
-
-## 📄 License
-
-MIT License. You are free to use, modify, and distribute this extension, but **credit to the original author must be preserved**.
+- Angular CLI installed globally:
+  ```bash
+  npm install -g @angular/cli
+  ```
