@@ -1,13 +1,17 @@
 {
   "input.nameType": "Name of the {0}",
-  "warning.nameNotProvided": "Name of the {0} not provided.",
   "input.componentName": "Component name",
-  "warning.noComponentName": "Component name not provided.",
-  "warning.noRoutesFile": "No nearby *.routes.ts file found.",
-  "info.routeAdded": "Route added to {0}.",
   "input.routesFileName": "Routes file name",
-  "warning.routesFileNameMissing": "Routes file name not provided.",
-  "info.routesFileCreated": "{0}.routes.ts created successfully.",
-  "test": "test ingles",
-  "NO_EXISTE_CLAVE": "NO_EXISTE_CLAVE"
+  "warning.nameNotProvided": "No name was provided for the {0}.",
+  "warning.noComponentName": "No component name was provided.",
+  "warning.noRoutesFile": "No nearby routes file was found.",
+  "warning.routesFileNameMissing": "Routes file name was not provided.",
+  "error.noWorkspace": "❌ Workspace not found.",
+  "error.failedToRunAngularCLI": "❌ Failed to run Angular CLI.",
+  "error.failedGeneration": "❌ Failed to generate the {0}.",
+  "error.failedComponentCreation": "❌ Failed to create component {0}.",
+  "info.generatedSuccess": "✅ {0} \"{1}\" generated successfully.",
+  "info.routeAdded": "📌 Route added in {0}.",
+  "info.routesFileCreated": "📁 Routes file \"{0}\" created successfully.",
+  "loadingMessage": "⌛ Creating {0} \"{1}\"..."
 }
