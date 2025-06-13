@@ -4,6 +4,12 @@ All notable changes to this project will be documented here.
 
 ---
 
+## [1.4.1] 2025-06-13
+
+### 🛠️ Fixes
+- Cleaned up the `package.json` file to remove conflicting descriptions and potential blocked keywords by the VS Code Marketplace.
+- Removed unnecessary `activationEvents` to ensure smooth verification and publishing.
+
 ## [1.4.0] 2025-06-08
 
 ### ✨ Added
