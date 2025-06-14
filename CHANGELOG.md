@@ -4,6 +4,17 @@ All notable changes to this project will be documented here.
 
 ---
 
+## [1.4.2] - 2025-06-14
+
+### Fixed
+- 🐛 Fixed a critical issue where the extension failed to activate on other machines with the error `Cannot find module '@vscode/l10n'`. This was caused by the `node_modules` folder not being properly included in the `.vsix` package. The packaging process now ensures all necessary dependencies are bundled.
+
+## [1.4.1] 2025-06-13
+
+### 🛠️ Fixes
+- Cleaned up the `package.json` file to remove conflicting descriptions and potential blocked keywords by the VS Code Marketplace.
+- Removed unnecessary `activationEvents` to ensure smooth verification and publishing.
+
 ## [1.4.0] 2025-06-08
 
 ### ✨ Added

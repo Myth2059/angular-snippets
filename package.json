@@ -1,13 +1,14 @@
 {
   "name": "mythdev-angular-snippets",
   "displayName": "Simple Angular Snippets (by Myth_Dev)",
-  "description": "Supercharge your Angular workflow in VS Code! This extension streamlines Angular development by letting you generate components, services, pipes, directives, and more—right from the context menu. No more manual scaffolding or repetitive imports!",
-  "version": "1.4.0",
+  "description": "Angular development extension for VS Code. Provides context menu commands to generate Angular components, services, pipes, and directives with proper TypeScript imports and file structure.",
+  "version": "1.4.1",
   "publisher": "mythdev",
   "repository": {
     "type": "git",
     "url": "https://github.com/Myth2059/angular-snippets"
   },
+  "license": "MIT",
   "galleryBanner": {
     "color": "#1e1e2f",
     "theme": "dark"
@@ -24,21 +25,11 @@
   "keywords": [
     "angular",
     "snippets",
-    "productivity",
     "components",
     "scaffolding",
-    "generator",
     "typescript"
-  ],
-  "activationEvents": [
-    "onCommand:angular-snippet-tools.createComponent",
-    "onCommand:angular-snippet-tools.createService",
-    "onCommand:angular-snippet-tools.createDirective",
-    "onCommand:angular-snippet-tools.createPipe",
-    "onCommand:angular-snippet-tools.createGuard",
-    "onCommand:angular-snippet-tools.createInterceptor",
-    "onCommand:angular-snippet-tools.createAndAddRoute",
-    "onCommand:angular-snippet-tools.createRoutesFile"
+  ],  
+  "activationEvents": [   
   ],
   "main": "./out/extension.js",
   "l10n": "./l10n",
