@@ -11,28 +11,34 @@ import { spawn } from "child_process";
  * @param cwd - The working directory from where the command should run
  */
 async function runAngularCommand(command: string, cwd: string): Promise<void> {
+  console.log("[runAngularCommand] Executing command:", command, "at", cwd);
   return new Promise<void>((resolve, reject) => {
-    // 1️⃣ Create a child process using spawn to execute the CLI command
-    const child = spawn(command, { cwd, shell: true });
+    try {
+      // 1️⃣ Create a child process using spawn to execute the CLI command
+      const child = spawn(command, { cwd, shell: true });
 
-    // 2️⃣ Handle standard output from the CLI command
-    child.stdout.on("data", (data) => console.log(data.toString()));
+      // 2️⃣ Handle standard output from the CLI command
+      child.stdout.on("data", (data) => console.log("[stdout]", data.toString()));
 
-    // 3️⃣ Handle error output from the CLI command
-    child.stderr.on("data", (data) => console.error(data.toString()));
+      // 3️⃣ Handle error output from the CLI command
+      child.stderr.on("data", (data) => console.error("[stderr]", data.toString()));
 
-    // 4️⃣ Resolve or reject the Promise when the process ends
-    child.on("close", (code) => {
-      console.log(`Angular CLI exited with code ${code}`);
-      if (code === 0) resolve();
-      else reject();
-    });
+      // 4️⃣ Resolve or reject the Promise when the process ends
+      child.on("close", (code) => {
+        console.log(`[runAngularCommand] Angular CLI exited with code ${code}`);
+        if (code === 0) resolve();
+        else reject(new Error(`Angular CLI exited with code ${code}`));
+      });
 
-    // 5️⃣ Handle errors during the execution
-    child.on("error", (err) => {
-      console.error(l10n.t("error.failedToRunAngularCLI"), err);
-      reject(err);
-    });
+      // 5️⃣ Handle errors during the execution
+      child.on("error", (err) => {
+        console.error(l10n.t("error.failedToRunAngularCLI"), err);
+        reject(err);
+      });
+    } catch (e) {
+      console.error("[runAngularCommand] Unexpected error:", e);
+      reject(e);
+    }
   });
 }
 
@@ -42,11 +48,13 @@ async function runAngularCommand(command: string, cwd: string): Promise<void> {
  * @param uri - The folder URI where the entity will be created
  */
 function generateAngular(type: string, uri: vscode.Uri) {
+  console.log("[generateAngular] Start generating:", type, uri);
   vscode.window
     .showInputBox({
       prompt: l10n.t("input.nameType", type),
     })
     .then(async (name) => {
+      console.log("[generateAngular] User input:", name);
       if (!name) {
         // Show a warning if no name was provided
         vscode.window.showWarningMessage(l10n.t("warning.nameNotProvided", type));
@@ -68,6 +76,7 @@ function generateAngular(type: string, uri: vscode.Uri) {
       const command = `ng g ${type[0]} ${cleanedPath}/${name} ${
         type === "component" ? "--standalone --skip-tests --flat" : ""
       }`;
+      console.log("[generateAngular] Full command:", command);
 
       // 3️⃣ Show progress while the CLI runs
       try {
@@ -84,7 +93,9 @@ function generateAngular(type: string, uri: vscode.Uri) {
 
         // 4️⃣ Notify user of success
         vscode.window.showInformationMessage(l10n.t("info.generatedSuccess", type, name));
-      } catch {
+      } catch (err) {
+        // ❌ Handle errors during CLI execution
+        console.error("[generateAngular] Error generating:", err);
         vscode.window.showErrorMessage(l10n.t("error.failedGeneration", type));
       }
     });
@@ -95,9 +106,10 @@ function generateAngular(type: string, uri: vscode.Uri) {
  * @param type - The Angular element type (component, pipe, etc.)
  */
 function registerCommand(type: string) {
-  return vscode.commands.registerCommand(`angular-snippet-tools.create${capitalize(type)}`, (uri: vscode.Uri) =>
-    generateAngular(type, uri)
-  );
+  return vscode.commands.registerCommand(`angular-snippet-tools.create${capitalize(type)}`, (uri: vscode.Uri) => {
+    console.log("[registerCommand] Registering command for:", type);
+    generateAngular(type, uri);
+  });
 }
 
 /**
@@ -114,6 +126,8 @@ function capitalize(s: string): string {
  * @param context - VS Code extension context
  */
 export async function activate(context: vscode.ExtensionContext) {
+  console.log("[activate] Activating extension");
+
   // 1️⃣ Determine the user's language
   const lang = (vscode.env.language ?? "en").split("-")[0];
   const bundleUri = vscode.Uri.joinPath(context.extensionUri, "l10n", `bundle.l10n.${lang}.json`);
@@ -128,12 +142,16 @@ export async function activate(context: vscode.ExtensionContext) {
   // 3️⃣ Register custom route-related commands
   context.subscriptions.push(
     vscode.commands.registerCommand("angular-snippet-tools.createAndAddRoute", (uri: vscode.Uri) => {
+      console.log("[activate] Triggered createAndAddRoute");
       createAndAddRoute(uri);
     })
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("angular-snippet-tools.createRoutesFile", createRoutesFile)
+    vscode.commands.registerCommand("angular-snippet-tools.createRoutesFile", (uri: vscode.Uri) => {
+      console.log("[activate] Triggered createRoutesFile");
+      createRoutesFile(uri);
+    })
   );
 }
 
