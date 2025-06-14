@@ -2,7 +2,7 @@
   "name": "mythdev-angular-snippets",
   "displayName": "Simple Angular Snippets (by Myth_Dev)",
   "description": "Angular development extension for VS Code. Provides context menu commands to generate Angular components, services, pipes, and directives with proper TypeScript imports and file structure.",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "publisher": "mythdev",
   "repository": {
     "type": "git",
